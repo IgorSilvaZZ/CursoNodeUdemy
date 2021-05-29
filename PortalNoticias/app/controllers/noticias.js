@@ -15,7 +15,9 @@ module.exports.noticia = (application, req, res) => {
 
     const noticiaModel = new application.app.models.NoticiasDAO(dbConection);
 
-    noticiaModel.getNoticia((err, result) => {
+    const { id_noticia } = req.query;
+
+    noticiaModel.getNoticia(id_noticia, (err, result) => {
         if (err) return res.status(400).send("Erro ao realizar a consulta");
             
         res.render("noticias/noticia", { noticia: result[0] });
