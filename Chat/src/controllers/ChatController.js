@@ -13,7 +13,9 @@ module.exports = {
             return
         }
 
-        res.render('chat');
+        global.io.emit('msgParaCliente', { apelido: dataForm.apelido, mensagem: 'Acabou de entrar no chat' });
+
+        res.render('chat', { dataForm });
     }
     
 }
